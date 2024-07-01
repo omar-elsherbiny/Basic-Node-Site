@@ -1,4 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&family=Playwrite+US+Trad:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
 body {
-    /* background-image: url('./bgr.jpg'); */
-    background-color: rebeccapurple;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    background-image: url('./bgr.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    font-family: 'Playwrite DE Grund', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    text-align: center;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 0.3rem;
+
+    border-radius: 0 0 0 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    border-right: none;
+}
+
+nav>h4 {
+    margin: 0 0.3rem;
+}
+
+nav>h4.current {
+    text-decoration: underline;
+}
+
+.link {
+    transition: transform 0.2s ease-in-out;
+}
+
+.link>a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main .link>a {
+    text-decoration: underline;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    font-family: 'Playwrite IT Moderna', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    rotate: -5deg;
+}
+
+@media (pointer:fine) {
+    .link:hover {
+        transform: scale(1.07);
+    }
 }
