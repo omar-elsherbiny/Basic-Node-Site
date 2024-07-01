@@ -1,8 +1,8 @@
-var http = require('http');
-var url = require('url');
+var express = require('express');
 var fs = require('fs');
 require('dotenv').config();
 
+const app = express();
 const hostname = process.env.hostname;
 const port = process.env.port;
 
@@ -18,18 +18,24 @@ function writeHtmlFile(res, filename) {
     });
 }
 
-http.createServer(function (req, res) {
-    let urlPath = url.parse(req.url, true).pathname;
-    if (urlPath == '/' || urlPath == '/index') {
-        writeHtmlFile(res, './index.html');
-    } else if (urlPath == '/about') {
-        writeHtmlFile(res, './about.html');
-    } else if (urlPath == '/contact-me') {
-        writeHtmlFile(res, './contact-me.html');
-    } else {
-        writeHtmlFile(res, './404.html');
-    }
+app.use(express.static('public'));
 
-}).listen(port, hostname, () => {
+app.get(['/', '/index'], function (req, res) {
+    writeHtmlFile(res, './index.html');
+});
+
+app.get('/about', function (req, res) {
+    writeHtmlFile(res, './about.html');
+});
+
+app.get('/contact-me', function (req, res) {
+    writeHtmlFile(res, './contact-me.html');
+});
+
+app.all('*', function (req, res) {
+    writeHtmlFile(res, './404.html');
+});
+
+app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
